@@ -1,0 +1,72 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNbGyWVslA5aHU9286hGIOl",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/rakshmitha04/CSA6303/blob/main/LAB%20EXPERIMENTS/EXP20\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "zSHXomagxq0t",
+        "outputId": "ac5bb9e9-123a-40cf-a4cc-94f63afbaf69"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter incident description: An attacker sends ransomware to a computer\n",
+            "Threat Category: Malware\n"
+          ]
+        }
+      ],
+      "source": [
+        "description = input(\"Enter incident description: \").lower()\n",
+        "\n",
+        "threats = {\n",
+        "    \"Phishing\": [\"phishing\", \"fake email\", \"credential theft\"],\n",
+        "    \"DoS/DDoS\": [\"ddos\", \"denial of service\", \"traffic flooding\"],\n",
+        "    \"Malware\": [\"ransomware\", \"virus\", \"trojan\", \"malware\"],\n",
+        "    \"Man-in-the-Middle\": [\"man-in-the-middle\", \"mitm\", \"intercept traffic\"]\n",
+        "}\n",
+        "\n",
+        "found = False\n",
+        "\n",
+        "for threat, keywords in threats.items():\n",
+        "    if any(word in description for word in keywords):\n",
+        "        print(\"Threat Category:\", threat)\n",
+        "        found = True\n",
+        "        break\n",
+        "\n",
+        "if not found:\n",
+        "    print(\"Threat Category: Unknown\")"
+      ]
+    }
+  ]
+}
