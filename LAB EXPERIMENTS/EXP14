@@ -1,0 +1,78 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyP2y9A1fG8VmjmIhZNpdIUb",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/rakshmitha04/CSA6303/blob/main/LAB%20EXPERIMENTS/EXP14\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "rMVPCTRBu4yU",
+        "outputId": "c552dcc0-e666-4535-8c92-7ea6afdbf251"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Collected Events: 3\n",
+            "ALERT: Multiple failed logins from 10.0.0.5\n"
+          ]
+        }
+      ],
+      "source": [
+        "from collections import Counter\n",
+        "\n",
+        "events = [\n",
+        "    {\"source\": \"Firewall\", \"ip\": \"10.0.0.5\", \"event\": \"failed_login\"},\n",
+        "    {\"source\": \"Server\", \"ip\": \"10.0.0.5\", \"event\": \"failed_login\"},\n",
+        "    {\"source\": \"IDS\", \"ip\": \"10.0.0.5\", \"event\": \"failed_login\"}\n",
+        "]\n",
+        "\n",
+        "print(\"Collected Events:\", len(events))\n",
+        "\n",
+        "normalized = [\n",
+        "    {\"source\": e[\"source\"].lower(),\n",
+        "     \"ip\": e[\"ip\"],\n",
+        "     \"event\": e[\"event\"].lower()}\n",
+        "    for e in events\n",
+        "]\n",
+        "\n",
+        "counts = Counter(\n",
+        "    e[\"ip\"] for e in normalized\n",
+        "    if e[\"event\"] == \"failed_login\"\n",
+        ")\n",
+        "\n",
+        "for ip, count in counts.items():\n",
+        "    if count >= 3:\n",
+        "        print(\"ALERT: Multiple failed logins from\", ip)"
+      ]
+    }
+  ]
+}
