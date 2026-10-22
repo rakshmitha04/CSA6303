@@ -1,0 +1,72 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMPPtncQKMtP0Bb1gzpK01J",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/rakshmitha04/CSA6303/blob/main/LAB%20EXPERIMENTS/EXP15\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "VAyMmMl1v_dk",
+        "outputId": "b0670d3d-9dd4-4737-fbf7-648aaa8457e7"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Describe security control: Encryption protects stored information\n",
+            "Control Theme: Technological\n"
+          ]
+        }
+      ],
+      "source": [
+        "control = input(\"Describe security control: \").lower()\n",
+        "\n",
+        "domains = {\n",
+        "    \"Organizational\": [\"policy\", \"risk management\", \"supplier\"],\n",
+        "    \"People\": [\"employee\", \"training\", \"awareness\"],\n",
+        "    \"Physical\": [\"door\", \"cctv\", \"building\"],\n",
+        "    \"Technological\": [\"firewall\", \"encryption\", \"antivirus\"]\n",
+        "}\n",
+        "\n",
+        "found = False\n",
+        "\n",
+        "for domain, keywords in domains.items():\n",
+        "    if any(word in control for word in keywords):\n",
+        "        print(\"Control Theme:\", domain)\n",
+        "        found = True\n",
+        "        break\n",
+        "\n",
+        "if not found:\n",
+        "    print(\"Control Theme: Unknown\")"
+      ]
+    }
+  ]
+}
