@@ -1,0 +1,78 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNUzH0WTwfCUpOzzGQ7c1tm",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/rakshmitha04/CSA6303/blob/main/LAB%20EXPERIMENTS/EXP22\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "YCo_x6KnynEe",
+        "outputId": "0c760f14-7072-4eeb-a016-2598fc085ec1"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter username to check: ALICE\n",
+            "No brute-force pattern detected.\n"
+          ]
+        }
+      ],
+      "source": [
+        "logs = [\n",
+        "    (\"alice\", \"FAIL\"),\n",
+        "    (\"alice\", \"FAIL\"),\n",
+        "    (\"alice\", \"FAIL\"),\n",
+        "    (\"alice\", \"SUCCESS\"),\n",
+        "    (\"bob\", \"FAIL\")\n",
+        "]\n",
+        "\n",
+        "username = input(\"Enter username to check: \")\n",
+        "failed_count = 0\n",
+        "detected = False\n",
+        "\n",
+        "for user, status in logs:\n",
+        "    if user == username:\n",
+        "        if status == \"FAIL\":\n",
+        "            failed_count += 1\n",
+        "        elif status == \"SUCCESS\":\n",
+        "            if failed_count >= 3:\n",
+        "                detected = True\n",
+        "            failed_count = 0\n",
+        "\n",
+        "if detected:\n",
+        "    print(\"Alert: Possible brute-force attack detected!\")\n",
+        "else:\n",
+        "    print(\"No brute-force pattern detected.\")"
+      ]
+    }
+  ]
+}
