@@ -1,0 +1,79 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPEzrCic76jwhuxSliVzPTI",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/rakshmitha04/CSA6303/blob/main/LAB%20EXPERIMENTS/EXP19\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "NAsP42J7xS9J",
+        "outputId": "cb8f5089-327e-40bd-94ce-f14b7ec46c6d"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Search Results: Failed Events\n",
+            "{'user': 'Bob', 'status': 'failed'}\n",
+            "{'user': 'Bob', 'status': 'failed'}\n",
+            "\n",
+            "Stats Count by User:\n",
+            "Alice : 2\n",
+            "Bob : 2\n"
+          ]
+        }
+      ],
+      "source": [
+        "from collections import Counter\n",
+        "\n",
+        "events = [\n",
+        "    {\"user\": \"Alice\", \"status\": \"success\"},\n",
+        "    {\"user\": \"Bob\", \"status\": \"failed\"},\n",
+        "    {\"user\": \"Bob\", \"status\": \"failed\"},\n",
+        "    {\"user\": \"Alice\", \"status\": \"success\"}\n",
+        "]\n",
+        "\n",
+        "print(\"Search Results: Failed Events\")\n",
+        "\n",
+        "for event in events:\n",
+        "    if event[\"status\"] == \"failed\":\n",
+        "        print(event)\n",
+        "\n",
+        "print(\"\\nStats Count by User:\")\n",
+        "\n",
+        "counts = Counter(e[\"user\"] for e in events)\n",
+        "\n",
+        "for user, count in counts.items():\n",
+        "    print(user, \":\", count)"
+      ]
+    }
+  ]
+}
