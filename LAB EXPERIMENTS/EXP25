@@ -1,0 +1,103 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMWbWloQQNvsrOLT05XC70H",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/rakshmitha04/CSA6303/blob/main/LAB%20EXPERIMENTS/EXP25\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "sHot5v8jzofB",
+        "outputId": "c5c68bb7-1af4-46e5-a4bc-e72f911588fe"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Chain-of-Custody Verification\n",
+            "PASS: Evidence chain is intact\n"
+          ]
+        }
+      ],
+      "source": [
+        "import hashlib\n",
+        "\n",
+        "records = [\n",
+        "    {\"evidence\": \"Evidence A\", \"time\": 100, \"previous_hash\": \"GENESIS\"},\n",
+        "    {\"evidence\": \"Evidence B\", \"time\": 110, \"previous_hash\": \"\"},\n",
+        "    {\"evidence\": \"Evidence C\", \"time\": 120, \"previous_hash\": \"\"}\n",
+        "]\n",
+        "\n",
+        "previous_hash = \"GENESIS\"\n",
+        "previous_time = 0\n",
+        "\n",
+        "# Generate a linked hash chain for demonstration\n",
+        "for record in records:\n",
+        "    record[\"previous_hash\"] = previous_hash\n",
+        "\n",
+        "    data = f'{record[\"evidence\"]}|{record[\"time\"]}|{previous_hash}'\n",
+        "    record[\"hash\"] = hashlib.sha256(data.encode()).hexdigest()\n",
+        "\n",
+        "    previous_hash = record[\"hash\"]\n",
+        "\n",
+        "print(\"Chain-of-Custody Verification\")\n",
+        "\n",
+        "valid = True\n",
+        "previous_hash = \"GENESIS\"\n",
+        "previous_time = 0\n",
+        "\n",
+        "for record in records:\n",
+        "    data = (\n",
+        "        f'{record[\"evidence\"]}|{record[\"time\"]}|'\n",
+        "        f'{record[\"previous_hash\"]}'\n",
+        "    )\n",
+        "\n",
+        "    calculated_hash = hashlib.sha256(data.encode()).hexdigest()\n",
+        "\n",
+        "    if record[\"previous_hash\"] != previous_hash:\n",
+        "        valid = False\n",
+        "\n",
+        "    if record[\"time\"] < previous_time:\n",
+        "        valid = False\n",
+        "\n",
+        "    if record[\"hash\"] != calculated_hash:\n",
+        "        valid = False\n",
+        "\n",
+        "    previous_hash = record[\"hash\"]\n",
+        "    previous_time = record[\"time\"]\n",
+        "\n",
+        "if valid:\n",
+        "    print(\"PASS: Evidence chain is intact\")\n",
+        "else:\n",
+        "    print(\"FAIL: Evidence chain is broken or timestamps are invalid\")"
+      ]
+    }
+  ]
+}
