@@ -1,0 +1,80 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPtqirnz8LXmRwWy5CvJLmg",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/rakshmitha04/CSA6303/blob/main/LAB%20EXPERIMENTS/EXP24\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "9PFjUynNzZqn",
+        "outputId": "518b6e4a-47dc-4345-968c-628370372cfb"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Security Baseline Assessment\n",
+            "Firewall : PASS\n",
+            "Antivirus : PASS\n",
+            "MFA : FAIL\n",
+            "Encryption : FAIL\n",
+            "Automatic Updates : PASS\n"
+          ]
+        }
+      ],
+      "source": [
+        "required = {\n",
+        "    \"Firewall\": \"enabled\",\n",
+        "    \"Antivirus\": \"enabled\",\n",
+        "    \"MFA\": \"enabled\",\n",
+        "    \"Encryption\": \"enabled\",\n",
+        "    \"Automatic Updates\": \"enabled\"\n",
+        "}\n",
+        "\n",
+        "current = {\n",
+        "    \"Firewall\": \"enabled\",\n",
+        "    \"Antivirus\": \"enabled\",\n",
+        "    \"MFA\": \"disabled\",\n",
+        "    \"Encryption\": \"disabled\",\n",
+        "    \"Automatic Updates\": \"enabled\"\n",
+        "}\n",
+        "\n",
+        "print(\"Security Baseline Assessment\")\n",
+        "\n",
+        "for control, baseline in required.items():\n",
+        "    if current.get(control, \"missing\") == baseline:\n",
+        "        print(control, \": PASS\")\n",
+        "    else:\n",
+        "        print(control, \": FAIL\")"
+      ]
+    }
+  ]
+}
