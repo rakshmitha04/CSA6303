@@ -1,0 +1,63 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMUmvmycsgqhIoT6VEWYfqr",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/rakshmitha04/CSA6303/blob/main/LAB%20EXPERIMENTS/EXP13\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "zW7KN8houVmK",
+        "outputId": "4b53578d-eb12-4e96-e99a-ccbaaa56c978"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Has context? (yes/no): YES\n",
+            "Is confidence assessed? (yes/no): YES\n",
+            "Is it actionable? (yes/no): YES\n",
+            "Actionable Threat Intelligence\n"
+          ]
+        }
+      ],
+      "source": [
+        "context = input(\"Has context? (yes/no): \").lower()\n",
+        "confidence = input(\"Is confidence assessed? (yes/no): \").lower()\n",
+        "action = input(\"Is it actionable? (yes/no): \").lower()\n",
+        "\n",
+        "if context == \"yes\" and confidence == \"yes\" and action == \"yes\":\n",
+        "    print(\"Actionable Threat Intelligence\")\n",
+        "else:\n",
+        "    print(\"Raw or Incomplete Threat Data\")"
+      ]
+    }
+  ]
+}
