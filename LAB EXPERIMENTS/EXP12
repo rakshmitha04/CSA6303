@@ -1,0 +1,63 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMs6MfOf6+XP4t1TYgW9VUC",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/rakshmitha04/CSA6303/blob/main/LAB%20EXPERIMENTS/EXP12\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "uxaD1idqtB9M",
+        "outputId": "a04c16ce-d279-4bcf-d658-b91cc47481a1"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter SOC alert description:  Ransomware detected on server\n",
+            "Priority: P1 - Critical\n"
+          ]
+        }
+      ],
+      "source": [
+        "alert = input(\"Enter SOC alert description: \").lower()\n",
+        "\n",
+        "if \"ransomware\" in alert or \"data breach\" in alert:\n",
+        "    print(\"Priority: P1 - Critical\")\n",
+        "elif \"malware\" in alert or \"privilege escalation\" in alert:\n",
+        "    print(\"Priority: P2 - High\")\n",
+        "elif \"port scan\" in alert or \"suspicious login\" in alert:\n",
+        "    print(\"Priority: P3 - Medium\")\n",
+        "else:\n",
+        "    print(\"Priority: P4 - Low\")"
+      ]
+    }
+  ]
+}
