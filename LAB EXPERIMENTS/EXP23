@@ -1,0 +1,67 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOBnj3XhPZrzfzUdTu+3QYU",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/rakshmitha04/CSA6303/blob/main/LAB%20EXPERIMENTS/EXP23\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "eAU9BgFmyxMq",
+        "outputId": "0443d302-2467-4fa8-fd10-a11e6f7a43ac"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter source IP: 10.0.0.5\n",
+            "Enter traffic content:  SQL_INJECTION detected\n",
+            "BLOCK: Malicious traffic detected!\n"
+          ]
+        }
+      ],
+      "source": [
+        "signatures = [\"MALWARE\", \"SQL_INJECTION\", \"ATTACK\"]\n",
+        "\n",
+        "whitelist = [\"192.168.1.10\"]\n",
+        "\n",
+        "source_ip = input(\"Enter source IP: \")\n",
+        "traffic = input(\"Enter traffic content: \").upper()\n",
+        "\n",
+        "if source_ip in whitelist:\n",
+        "    print(\"ALLOW: Trusted source whitelisted\")\n",
+        "elif any(signature in traffic for signature in signatures):\n",
+        "    print(\"BLOCK: Malicious traffic detected!\")\n",
+        "else:\n",
+        "    print(\"ALLOW: No known attack signature detected\")"
+      ]
+    }
+  ]
+}
