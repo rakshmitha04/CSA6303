@@ -1,0 +1,61 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMdXtzIoBcAyP1dlfhkiOL4",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/rakshmitha04/CSA6303/blob/main/LAB%20EXPERIMENTS/EXP18\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "XiqOAlJSxAHp"
+      },
+      "outputs": [],
+      "source": [
+        "import hashlib\n",
+        "\n",
+        "known_hashes = {\n",
+        "    hashlib.sha256(b\"malicious_demo_file\").hexdigest()\n",
+        "}\n",
+        "\n",
+        "filename = input(\"Enter file path: \")\n",
+        "\n",
+        "try:\n",
+        "    with open(filename, \"rb\") as f:\n",
+        "        file_hash = hashlib.sha256(f.read()).hexdigest()\n",
+        "\n",
+        "    print(\"SHA-256:\", file_hash)\n",
+        "\n",
+        "    if file_hash in known_hashes:\n",
+        "        print(\"Known malicious hash detected\")\n",
+        "    else:\n",
+        "        print(\"No match in demo database\")\n",
+        "\n",
+        "except FileNotFoundError:\n",
+        "    print(\"File not found\")"
+      ]
+    }
+  ]
+}
