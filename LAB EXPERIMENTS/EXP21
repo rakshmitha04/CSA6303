@@ -1,0 +1,78 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNvUHmHixSxpd+UDw32pHch",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/rakshmitha04/CSA6303/blob/main/LAB%20EXPERIMENTS/EXP21\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Nwq41nndyNoe",
+        "outputId": "b2786597-8dd0-4b96-ce94-7282a5131dea"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter post-incident report: The system lacked security patches and monitoring alerts. Backup recovery also failed.\n",
+            "\n",
+            "Improvement Areas Identified:\n",
+            "- Patch Management\n",
+            "- Monitoring\n",
+            "- Backup Strategy\n"
+          ]
+        }
+      ],
+      "source": [
+        "report = input(\"Enter post-incident report: \").lower()\n",
+        "\n",
+        "areas = {\n",
+        "    \"Patch Management\": [\"patch\", \"update\", \"vulnerability\"],\n",
+        "    \"Security Awareness\": [\"training\", \"awareness\", \"phishing\"],\n",
+        "    \"Monitoring\": [\"monitoring\", \"logs\", \"alert\"],\n",
+        "    \"Backup Strategy\": [\"backup\", \"recovery\", \"restore\"],\n",
+        "    \"Access Control\": [\"permissions\", \"access control\", \"unauthorized access\"]\n",
+        "}\n",
+        "\n",
+        "print(\"\\nImprovement Areas Identified:\")\n",
+        "\n",
+        "found = False\n",
+        "\n",
+        "for area, keywords in areas.items():\n",
+        "    if any(word in report for word in keywords):\n",
+        "        print(\"-\", area)\n",
+        "        found = True\n",
+        "\n",
+        "if not found:\n",
+        "    print(\"No improvement areas identified.\")"
+      ]
+    }
+  ]
+}
