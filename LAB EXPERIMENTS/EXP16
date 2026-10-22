@@ -1,0 +1,75 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPCQP7N0DgDdPdCx6wkNMWM",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/rakshmitha04/CSA6303/blob/main/LAB%20EXPERIMENTS/EXP16\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "-Dcc2HVovu3H",
+        "outputId": "2c8274b4-74ba-4969-8d48-b14eb220bc5a"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Firewall : Attack blocked\n",
+            "IDS : Attack already blocked\n",
+            "Antivirus : Attack already blocked\n",
+            "Access Control : Attack already blocked\n",
+            "Final Result: Protected\n"
+          ]
+        }
+      ],
+      "source": [
+        "layers = {\n",
+        "    \"Firewall\": True,\n",
+        "    \"IDS\": False,\n",
+        "    \"Antivirus\": True,\n",
+        "    \"Access Control\": True\n",
+        "}\n",
+        "\n",
+        "blocked = False\n",
+        "\n",
+        "for layer, detects_attack in layers.items():\n",
+        "    if blocked:\n",
+        "        print(layer, \": Attack already blocked\")\n",
+        "    elif detects_attack:\n",
+        "        print(layer, \": Attack blocked\")\n",
+        "        blocked = True\n",
+        "    else:\n",
+        "        print(layer, \": Attack passed\")\n",
+        "\n",
+        "print(\"Final Result:\", \"Protected\" if blocked else \"Attack succeeded\")"
+      ]
+    }
+  ]
+}
